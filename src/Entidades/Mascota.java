@@ -3,6 +3,9 @@ package Entidades;
 public class Mascota {
     private String raza;
 
+    public Mascota() {
+    }
+
     public Mascota(String raza) {
         this.raza = raza;
     }
