@@ -30,12 +30,18 @@ public class MascotaServicio {
                 System.out.println("Ingresa la raza");
                 m1.setRaza(sc.next());
                 m1.setRaza(m1.getRaza().substring(0, 1).toUpperCase() + m1.getRaza().substring(1).toLowerCase());
-                mascotas.add(m1.getRaza());
+                if (mascotas.contains(m1.getRaza())) {
+                    System.out.println("La raza ingresada ya había sido ingresada");
+                } else {
+                    mascotas.add(m1.getRaza());
+                }
             } else {
                 salir = true;
             }
 
         } while (!salir);
+
+        Collections.sort(mascotas);
 
         System.out.println("Las mascotas creadas son ");
         for (String s : mascotas) {
@@ -57,7 +63,6 @@ public class MascotaServicio {
         boolean salir = false;
         Iterator<String> iter = mascotas.iterator();
         String mascotasEnArray = iter.next();
-        Collections.sort(mascotas);
 
         System.out.println("Ingresa la raza del perro que quieres eliminar");
         razaIngresada = sc.next();
