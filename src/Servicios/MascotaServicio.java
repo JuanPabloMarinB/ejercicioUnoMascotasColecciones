@@ -1,12 +1,14 @@
 package Servicios;
 
 import Entidades.Mascota;
-import java.util.ArrayList;
-import java.util.Scanner;
+
+import java.util.*;
+
 public class MascotaServicio {
     ArrayList<String> mascotas = new ArrayList<>();
     Scanner sc = new Scanner(System.in).useDelimiter("\n");
     Mascota m1 = new Mascota();
+
     public void crearMascota() {
         String resp;
         boolean salir = false;
@@ -40,7 +42,7 @@ public class MascotaServicio {
             System.out.println(s);
         }
 
-        
+
         eliminarMascota();
 
         System.out.println("Las razas de mascotas sin las que eliminaste son ");
@@ -53,16 +55,19 @@ public class MascotaServicio {
     public void eliminarMascota() {
         String razaIngresada;
         boolean salir = false;
+        Iterator<String> iter = mascotas.iterator();
+        String mascotasEnArray = iter.next();
+        Collections.sort(mascotas);
 
         System.out.println("Ingresa la raza del perro que quieres eliminar");
         razaIngresada = sc.next();
         razaIngresada = razaIngresada.substring(0, 1).toUpperCase() + razaIngresada.substring(1).toLowerCase();
+
         if (mascotas.contains(razaIngresada)) {
             mascotas.remove(razaIngresada);
         } else {
             System.out.println("No se encontró la raza que ingresaste");
         }
-
         do {
             System.out.println("Deseas eliminar otra raza? S/N");
             String resp = sc.next();
